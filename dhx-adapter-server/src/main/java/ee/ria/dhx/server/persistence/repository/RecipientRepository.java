@@ -31,7 +31,7 @@ public interface RecipientRepository extends JpaRepository<Recipient, Long> {
 
   @Lock(LockModeType.PESSIMISTIC_WRITE)
   public List<Recipient> findByStatusIdAndOutgoingAndDhxInternalConsignmentIdNull(
-      Integer statusId, Boolean outgoing);
+      Integer statusId, Boolean outgoing, Pageable pageable);
 
   @Lock(LockModeType.PESSIMISTIC_WRITE)
   public List<Recipient> findByStatusIdAndOutgoingAndDhxInternalConsignmentIdNotNullAndDateModifiedLessThan(
