@@ -57,7 +57,7 @@ public class AsyncDhxPackageServiceImpl implements AsyncDhxPackageService {
     return null;
   }
 
-  @Async
+  @Async("threadPoolTaskExecutor")
   @Loggable
   @Override
   public void sendPackage(OutgoingDhxPackage outgoingPackage) {

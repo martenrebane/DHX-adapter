@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.ws.context.MessageContext;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -32,6 +33,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Slf4j
 @Endpoint
+@Async
 /**
  * Endpoint class which offers SOAP services.
  * 
