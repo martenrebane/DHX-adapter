@@ -66,6 +66,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.io.File;
@@ -199,8 +200,9 @@ public class SoapServiceTest {
     recipient.getTransport().setDokument(doc);
     recipient.setRecipientId(12L);
     recipients.add(recipient);
+    Pageable pageable = new PageRequest(0, 10);
     when(recipientRepository.findByStatusIdAndOutgoingAndDhxInternalConsignmentIdNull(
-        StatusEnum.IN_PROCESS.getClassificatorId(), true)).thenReturn(recipients);
+        StatusEnum.IN_PROCESS.getClassificatorId(), true, pageable)).thenReturn(recipients);
     // when(recipientRepository.findByRecipientId(any(Long.class))).thenReturn(recipient);
     DecContainer container = new DecContainer();
     when(capsuleService.getContainerFromDocument(doc)).thenReturn(container);
@@ -242,8 +244,9 @@ public class SoapServiceTest {
     recipient.getTransport().setDokument(doc);
     recipient.setRecipientId(12L);
     recipients.add(recipient);
+    Pageable pageable = new PageRequest(0, 10);
     when(recipientRepository.findByStatusIdAndOutgoingAndDhxInternalConsignmentIdNull(
-        StatusEnum.IN_PROCESS.getClassificatorId(), true)).thenReturn(recipients);
+        StatusEnum.IN_PROCESS.getClassificatorId(), true, pageable)).thenReturn(recipients);
     // when(recipientRepository.findByRecipientId(any(Long.class))).thenReturn(recipient);
     DecContainer container = new DecContainer();
     when(capsuleService.getContainerFromDocument(doc)).thenReturn(container);
