@@ -237,7 +237,7 @@ public class SoapService {
     date.setTime(date.getTime() - resendTimeout * 1000 * 60);
     log.debug("date from which documents will be sent again: {}", date);
     // documents that tried to send, but maybe server were stopped and status stays the same
-    int pages = (int) Math.ceil((float) allRecipients.size() / 4);
+    int pages = (int) Math.ceil((float) allRecipients.size() / 6);
 
 
     List<Recipient> recipientsSent = recipientRepository
@@ -245,7 +245,7 @@ public class SoapService {
                     statusId, true, date);
 
     for (int i = 0; i < pages; i++) {
-      Pageable paging = new PageRequest(i, 4);
+      Pageable paging = new PageRequest(i, 6);
 
       List<Recipient> recipients = recipientRepository
               .findByStatusIdAndOutgoingAndDhxInternalConsignmentIdNull(
